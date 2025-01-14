@@ -249,9 +249,9 @@ def get_data_min_max(records, device):
 
 		time_max = torch.max(time_max, tt.max())
 
-	print('data_max:', data_max)
-	print('data_min:', data_min)
-	print('time_max:', time_max)
+	# print('data_max:', data_max)
+	# print('data_min:', data_min)
+	# print('time_max:', time_max)
 
 	return data_min, data_max, time_max
 
@@ -350,6 +350,89 @@ def patch_variable_time_collate_fn(batch, args, device = torch.device("cpu"), da
 		}
 
 	data_dict = utils.split_and_patch_batch(data_dict, args, n_observed_tp, patch_indices)
+
+	return data_dict
+
+def patch_variable_time_collate_fn_(batch, args, device = torch.device("cpu"), data_type = "train", 
+	data_min = None, data_max = None, time_max = None):
+	"""
+	Expects a batch of time series data in the form of (record_id, tt, vals, mask) where
+		- record_id is a patient id
+		- tt is a (T, ) tensor containing T time values of observations.
+		- vals is a (T, D) tensor containing observed values for D variables.
+		- mask is a (T, D) tensor containing 1 where values were observed and 0 otherwise.
+	Returns:
+	Data form as input:
+		batch_tt: (B, M, L_in, D) the batch contains a maximal L_in time values of observations among M patches.
+		batch_vals: (B, M, L_in, D) tensor containing the observed values.
+		batch_mask: (B, M, L_in, D) tensor containing 1 where values were observed and 0 otherwise.
+	Data form to predict:
+		flat_tt: (L_out) the batch contains a maximal L_out time values of observations.
+		flat_vals: (B, L_out, D) tensor containing the observed values.
+		flat_mask: (B, L_out, D) tensor containing 1 where values were observed and 0 otherwise.
+	"""
+
+	D = batch[0][2].shape[1]
+	combined_tt, inverse_indices = torch.unique(torch.cat([ex[1] for ex in batch]), sorted=True, return_inverse=True)
+
+	# the number of observed time points 
+	n_observed_tp = torch.lt(combined_tt, args.history).sum()
+	observed_tp = combined_tt[:n_observed_tp] # (n_observed_tp, )
+
+	patch_indices = []
+	st, ed = 0, args.patch_size_
+	for i in range(args.npatch_):
+		if(i == args.npatch_-1):
+			inds = torch.where((observed_tp >= st) & (observed_tp <= ed))[0]
+		else:
+			inds = torch.where((observed_tp >= st) & (observed_tp < ed))[0]
+		patch_indices.append(inds)
+		st += args.stride_
+		ed += args.stride_
+
+	offset = 0
+	combined_vals = torch.zeros([len(batch), len(combined_tt), D]).to(device)
+	combined_mask = torch.zeros([len(batch), len(combined_tt), D]).to(device)
+	predicted_tp = []
+	predicted_data = []
+	predicted_mask = [] 
+	for b, (record_id, tt, vals, mask) in enumerate(batch):
+		indices = inverse_indices[offset:offset+len(tt)]
+		offset += len(tt)
+		combined_vals[b, indices] = vals
+		combined_mask[b, indices] = mask
+
+		tmp_n_observed_tp = torch.lt(tt, args.history).sum()
+		predicted_tp.append(tt[tmp_n_observed_tp:])
+		predicted_data.append(vals[tmp_n_observed_tp:])
+		predicted_mask.append(mask[tmp_n_observed_tp:])
+
+	combined_tt = combined_tt[:n_observed_tp]
+	combined_vals = combined_vals[:, :n_observed_tp]
+	combined_mask = combined_mask[:, :n_observed_tp]
+	predicted_tp = pad_sequence(predicted_tp, batch_first=True)
+	predicted_data = pad_sequence(predicted_data, batch_first=True)
+	predicted_mask = pad_sequence(predicted_mask, batch_first=True)
+
+	if(args.dataset != 'ushcn'):
+		combined_vals = utils.normalize_masked_data(combined_vals, combined_mask, 
+			att_min = data_min, att_max = data_max)
+		predicted_data = utils.normalize_masked_data(predicted_data, predicted_mask, 
+			att_min = data_min, att_max = data_max)
+
+	combined_tt = utils.normalize_masked_tp(combined_tt, att_min = 0, att_max = time_max)
+	predicted_tp = utils.normalize_masked_tp(predicted_tp, att_min = 0, att_max = time_max)
+		
+	data_dict = {
+		"data": combined_vals, # (n_batch, T_o, D)
+		"time_steps": combined_tt, # (T_o, )
+		"mask": combined_mask, # (n_batch, T_o, D)
+		"data_to_predict": predicted_data,
+		"tp_to_predict": predicted_tp,
+		"mask_predicted_data": predicted_mask,
+		}
+
+	data_dict = utils.split_and_patch_batch_(data_dict, args, n_observed_tp, patch_indices)
 
 	return data_dict
 

@@ -16,8 +16,10 @@ import torch.nn as nn
 import torch.optim as optim
 
 import lib.utils as utils
-from lib.parse_datasets import parse_datasets
+from lib.parse_datasets import parse_datasets, parse_datasets_
 from tPatchGNN.model.tPatchGNN import *
+
+import sys
 
 parser = argparse.ArgumentParser('IMTS Forecasting')
 
@@ -32,6 +34,8 @@ parser.add_argument('--patience', type=int, default=10, help="patience for early
 parser.add_argument('--history', type=int, default=24, help="number of hours (months for ushcn and ms for activity) as historical window")
 parser.add_argument('-ps', '--patch_size', type=float, default=24, help="window size for a patch")
 parser.add_argument('--stride', type=float, default=24, help="period stride for patch sliding")
+parser.add_argument('-ps_', '--patch_size_', type=float, default=24, help="window size for a patch")
+parser.add_argument('--stride_', type=float, default=24, help="period stride for patch sliding")
 parser.add_argument('--logmode', type=str, default="a", help='File mode of logging.')
 
 parser.add_argument('--lr',  type=float, default=1e-3, help="Starting learning rate.")
@@ -55,6 +59,7 @@ parser.add_argument('--gpu', type=str, default='0', help='which gpu to use.')
 
 args = parser.parse_args()
 args.npatch = int(np.ceil((args.history - args.patch_size) / args.stride)) + 1 # (window size for a patch)
+args.npatch_ = int(np.ceil((args.history - args.patch_size_) / args.stride_)) + 1 # (window size for a patch)
 
 os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu
 file_name = os.path.basename(__file__)[:-3]
@@ -84,6 +89,7 @@ if __name__ == '__main__':
 
 	##################################################################
 	data_obj = parse_datasets(args, patch_ts=True)
+	data_obj_ = parse_datasets_(args, patch_ts=True)
 	input_dim = data_obj["input_dim"]
 	
 	### Model setting ###
@@ -128,6 +134,15 @@ if __name__ == '__main__':
 		for _ in range(num_batches):
 			optimizer.zero_grad()
 			batch_dict = utils.get_next_batch(data_obj["train_dataloader"])
+			###
+			batch_dict_ = utils.get_next_batch(data_obj_["train_dataloader"])
+			print(batch_dict["observed_data"].shape)
+			print(batch_dict["data_to_predict"].shape)
+			print("#"*50)
+			print(batch_dict_["observed_data"].shape)
+			print(batch_dict_["data_to_predict"].shape)
+			sys.exit(0)
+			###
 			train_res = compute_all_losses(model, batch_dict)
 			train_res["loss"].backward()
 			optimizer.step()
