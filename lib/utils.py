@@ -310,6 +310,22 @@ def normalize_data(data):
 
 	return data_norm, att_min, att_max
 
+def normalize_masked_data_z(data, mask, att_min, att_max):
+	scale = att_max - att_min
+	scale = scale + (scale == 0) * 1e-8
+	# we don't want to divide by zero
+	if (scale != 0.).all(): 
+		data_norm = (data - att_min) / scale
+	else:
+		raise Exception("Zero!")
+
+	# set masked out elements back to zero 
+	data_norm[mask == 0] = 0
+
+	if torch.isnan(data_norm).any():
+		raise Exception("nans!")
+
+	return data_norm
 
 def normalize_masked_data(data, mask, att_min, att_max):
 	scale = att_max - att_min
