@@ -122,16 +122,28 @@ if __name__ == '__main__':
 	test_res = None
 	for itr in range(args.epoch):
 		st = time.time()
-
+		tt_max = 0
+		tt_max_ = 0
 		### Training ###
 		model.train()
 		for _ in range(num_batches):
 			optimizer.zero_grad()
 			batch_dict = utils.get_next_batch(data_obj["train_dataloader"])
-			train_res = compute_all_losses(model, batch_dict)
-			train_res["loss"].backward()
-			optimizer.step()
-
+			####
+			tt = batch_dict["observed_tp"]
+			if tt_max <= torch.max(tt):
+				tt_max = torch.max(tt)
+			tt_ = batch_dict["tp_to_predict"]
+			if tt_max_ <= torch.max(tt_):
+				tt_max_ = torch.max(tt_)
+			
+			####
+			# train_res = compute_all_losses(model, batch_dict)
+			# train_res["loss"].backward()
+			# optimizer.step()
+		print(tt_max)
+		print(tt_max_)
+		sys.exit(0)
 		### Validation ###
 		model.eval()
 		with torch.no_grad():
