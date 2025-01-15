@@ -34,3 +34,43 @@ Namespace(state='def', n=100000000, hop=1, nhead=1, tf_layer=1, nlayer=1, epoch=
 2025-01-15 18:01:27
 run_models.py --dataset physionet --state def --history 24 --patience 10 --batch_size 32 --lr 1e-3 --patch_size 8 --stride 8 --nhead 1 --tf_layer 1 --nlayer 1 --te_dim 10 --node_dim 10 --hid_dim 64 --outlayer Linear --seed 0 --gpu 0
 Namespace(state='def', n=100000000, hop=1, nhead=1, tf_layer=1, nlayer=1, epoch=1000, patience=10, history=24, patch_size=8.0, stride=8.0, logmode='a', lr=0.001, w_decay=0.0, batch_size=32, save='experiments/', load=None, seed=0, dataset='physionet', quantization=0.0, model='tPatchGNN', outlayer='Linear', hid_dim=64, te_dim=10, node_dim=10, gpu='0', npatch=3, device=device(type='cpu'), PID=12375, ndim=41)
+/home/taejoo/dsl_lab/t-PatchGNN-tj/run_models.py
+2025-01-15 18:06:11
+run_models.py --dataset physionet --state def --history 24 --patience 10 --batch_size 32 --lr 1e-3 --patch_size 8 --stride 8 --nhead 1 --tf_layer 1 --nlayer 1 --te_dim 10 --node_dim 10 --hid_dim 64 --outlayer Linear --seed 0 --gpu 0
+Namespace(state='def', n=100000000, hop=1, nhead=1, tf_layer=1, nlayer=1, epoch=1000, patience=10, history=24, patch_size=8.0, stride=8.0, logmode='a', lr=0.001, w_decay=0.0, batch_size=32, save='experiments/', load=None, seed=0, dataset='physionet', quantization=0.0, model='tPatchGNN', outlayer='Linear', hid_dim=64, te_dim=10, node_dim=10, gpu='0', npatch=3, device=device(type='cpu'), PID=14664, ndim=41)
+/home/taejoo/dsl_lab/t-PatchGNN-tj/run_models.py
+2025-01-15 18:07:08
+run_models.py --dataset physionet --state def --history 24 --patience 10 --batch_size 32 --lr 1e-3 --patch_size 8 --stride 8 --nhead 1 --tf_layer 1 --nlayer 1 --te_dim 10 --node_dim 10 --hid_dim 64 --outlayer Linear --seed 0 --gpu 0
+Namespace(state='def', n=100000000, hop=1, nhead=1, tf_layer=1, nlayer=1, epoch=1000, patience=10, history=24, patch_size=8.0, stride=8.0, logmode='a', lr=0.001, w_decay=0.0, batch_size=32, save='experiments/', load=None, seed=0, dataset='physionet', quantization=0.0, model='tPatchGNN', outlayer='Linear', hid_dim=64, te_dim=10, node_dim=10, gpu='0', npatch=3, device=device(type='cpu'), PID=15170, ndim=41)
+/home/taejoo/dsl_lab/t-PatchGNN-tj/run_models.py
+2025-01-15 18:12:11
+run_models.py --dataset physionet --state def --history 24 --patience 10 --batch_size 32 --lr 1e-3 --patch_size 8 --stride 8 --nhead 1 --tf_layer 1 --nlayer 1 --te_dim 10 --node_dim 10 --hid_dim 64 --outlayer Linear --seed 0 --gpu 0
+Namespace(state='def', n=100000000, hop=1, nhead=1, tf_layer=1, nlayer=1, epoch=1000, patience=10, history=24, patch_size=8.0, stride=8.0, logmode='a', lr=0.001, w_decay=0.0, batch_size=32, save='experiments/', load=None, seed=0, dataset='physionet', quantization=0.0, model='tPatchGNN', outlayer='Linear', hid_dim=64, te_dim=10, node_dim=10, gpu='0', npatch=3, device=device(type='cpu'), PID=17348, ndim=41)
+/home/taejoo/dsl_lab/t-PatchGNN-tj/run_models.py
+2025-01-15 18:12:40
+run_models.py --dataset physionet --state def --history 24 --patience 10 --batch_size 32 --lr 1e-3 --patch_size 8 --stride 8 --nhead 1 --tf_layer 1 --nlayer 1 --te_dim 10 --node_dim 10 --hid_dim 64 --outlayer Linear --seed 0 --gpu 0
+Namespace(state='def', n=100000000, hop=1, nhead=1, tf_layer=1, nlayer=1, epoch=1000, patience=10, history=24, patch_size=8.0, stride=8.0, logmode='a', lr=0.001, w_decay=0.0, batch_size=32, save='experiments/', load=None, seed=0, dataset='physionet', quantization=0.0, model='tPatchGNN', outlayer='Linear', hid_dim=64, te_dim=10, node_dim=10, gpu='0', npatch=3, device=device(type='cpu'), PID=17653, ndim=41)
+/home/taejoo/dsl_lab/t-PatchGNN-tj/run_models.py
+2025-01-15 18:14:43
+run_models.py --dataset physionet --state def --history 24 --patience 10 --batch_size 32 --lr 1e-3 --patch_size 8 --stride 8 --nhead 1 --tf_layer 1 --nlayer 1 --te_dim 10 --node_dim 10 --hid_dim 64 --outlayer Linear --seed 0 --gpu 0
+Namespace(state='def', n=100000000, hop=1, nhead=1, tf_layer=1, nlayer=1, epoch=1000, patience=10, history=24, patch_size=8.0, stride=8.0, logmode='a', lr=0.001, w_decay=0.0, batch_size=32, save='experiments/', load=None, seed=0, dataset='physionet', quantization=0.0, model='tPatchGNN', outlayer='Linear', hid_dim=64, te_dim=10, node_dim=10, gpu='0', npatch=3, device=device(type='cpu'), PID=18600, ndim=41)
+/home/taejoo/dsl_lab/t-PatchGNN-tj/run_models.py
+2025-01-15 18:26:10
+run_models.py --dataset physionet --state def --history 24 --patience 10 --batch_size 32 --lr 1e-3 --patch_size 8 --stride 8 --nhead 1 --tf_layer 1 --nlayer 1 --te_dim 10 --node_dim 10 --hid_dim 64 --outlayer Linear --seed 0 --gpu 0
+Namespace(state='def', n=100000000, hop=1, nhead=1, tf_layer=1, nlayer=1, epoch=1000, patience=10, history=24, patch_size=8.0, stride=8.0, logmode='a', lr=0.001, w_decay=0.0, batch_size=32, save='experiments/', load=None, seed=0, dataset='physionet', quantization=0.0, model='tPatchGNN', outlayer='Linear', hid_dim=64, te_dim=10, node_dim=10, gpu='0', npatch=3, device=device(type='cpu'), PID=23588, ndim=41)
+/home/taejoo/dsl_lab/t-PatchGNN-tj/run_models.py
+2025-01-15 18:27:32
+run_models.py --dataset physionet --state def --history 24 --patience 10 --batch_size 32 --lr 1e-3 --patch_size 8 --stride 8 --nhead 1 --tf_layer 1 --nlayer 1 --te_dim 10 --node_dim 10 --hid_dim 64 --outlayer Linear --seed 0 --gpu 0
+Namespace(state='def', n=100000000, hop=1, nhead=1, tf_layer=1, nlayer=1, epoch=1000, patience=10, history=24, patch_size=8.0, stride=8.0, logmode='a', lr=0.001, w_decay=0.0, batch_size=32, save='experiments/', load=None, seed=0, dataset='physionet', quantization=0.0, model='tPatchGNN', outlayer='Linear', hid_dim=64, te_dim=10, node_dim=10, gpu='0', npatch=3, device=device(type='cpu'), PID=24262, ndim=41)
+/home/taejoo/dsl_lab/t-PatchGNN-tj/run_models.py
+2025-01-15 18:29:10
+run_models.py --dataset physionet --state def --history 24 --patience 10 --batch_size 32 --lr 1e-3 --patch_size 8 --stride 8 --nhead 1 --tf_layer 1 --nlayer 1 --te_dim 10 --node_dim 10 --hid_dim 64 --outlayer Linear --seed 0 --gpu 0
+Namespace(state='def', n=100000000, hop=1, nhead=1, tf_layer=1, nlayer=1, epoch=1000, patience=10, history=24, patch_size=8.0, stride=8.0, logmode='a', lr=0.001, w_decay=0.0, batch_size=32, save='experiments/', load=None, seed=0, dataset='physionet', quantization=0.0, model='tPatchGNN', outlayer='Linear', hid_dim=64, te_dim=10, node_dim=10, gpu='0', npatch=3, device=device(type='cpu'), PID=25047, ndim=41)
+/home/taejoo/dsl_lab/t-PatchGNN-tj/run_models.py
+2025-01-15 18:31:38
+run_models.py --dataset physionet --state def --history 24 --patience 10 --batch_size 32 --lr 1e-3 --patch_size 8 --stride 8 --nhead 1 --tf_layer 1 --nlayer 1 --te_dim 10 --node_dim 10 --hid_dim 64 --outlayer Linear --seed 0 --gpu 0
+Namespace(state='def', n=100000000, hop=1, nhead=1, tf_layer=1, nlayer=1, epoch=1000, patience=10, history=24, patch_size=8.0, stride=8.0, logmode='a', lr=0.001, w_decay=0.0, batch_size=32, save='experiments/', load=None, seed=0, dataset='physionet', quantization=0.0, model='tPatchGNN', outlayer='Linear', hid_dim=64, te_dim=10, node_dim=10, gpu='0', npatch=3, device=device(type='cpu'), PID=26193, ndim=41)
+/home/taejoo/dsl_lab/t-PatchGNN-tj/run_models.py
+2025-01-15 19:23:26
+run_models.py --dataset physionet --state def --history 24 --patience 10 --batch_size 32 --lr 1e-3 --patch_size 8 --stride 8 --nhead 1 --tf_layer 1 --nlayer 1 --te_dim 10 --node_dim 10 --hid_dim 64 --outlayer Linear --seed 0 --gpu 0
+Namespace(state='def', n=100000000, hop=1, nhead=1, tf_layer=1, nlayer=1, epoch=1000, patience=10, history=24, patch_size=8.0, stride=8.0, logmode='a', lr=0.001, w_decay=0.0, batch_size=32, save='experiments/', load=None, seed=0, dataset='physionet', quantization=0.0, model='tPatchGNN', outlayer='Linear', hid_dim=64, te_dim=10, node_dim=10, gpu='0', npatch=3, device=device(type='cpu'), PID=33696, ndim=41)
