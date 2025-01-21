@@ -386,6 +386,7 @@ def split_and_patch_batch(data_dict, args, n_observed_tp, patch_indices):
 	observed_data_patches = observed_data.view(n_batch, 1, n_tp, n_dim).repeat(1, args.npatch, 1, 1)
 	observed_mask_patches = observed_mask.view(n_batch, 1, n_tp, n_dim).repeat(1, args.npatch, 1, 1)
 
+	## max_patch_len 구하는 for loop
 	max_patch_len = 0
 	for i in range(args.npatch):
 		indices = patch_indices[i]

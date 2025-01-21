@@ -83,7 +83,7 @@ if __name__ == '__main__':
 	# utils.makedirs("results/")
 
 	##################################################################
-	data_obj = parse_datasets(args, patch_ts=True)
+	data_obj = parse_datasets(args, patch_ts=False)
 	input_dim = data_obj["input_dim"]
 	
 	### Model setting ###
@@ -129,13 +129,14 @@ if __name__ == '__main__':
 			optimizer.zero_grad()
 			batch_dict = utils.get_next_batch(data_obj["train_dataloader"])
 			####
-			for k in range(41):
-				x = batch_dict["data_to_predict"][0,:,k]
-				mx = batch_dict["mask_predicted_data"][0,:,k].to(torch.bool)
-				x = x[mx]
-				print(x)
-				print("#"*50)
-
+			# for k in range(41):
+			# 	x = batch_dict["data_to_predict"][0,:,k]
+			# 	mx = batch_dict["mask_predicted_data"][0,:,k].to(torch.bool)
+			# 	x = x[mx]
+			# 	print(x)
+			# 	print("#"*50)
+			for n in range(10):
+				print(batch_dict["observed_tp"][n,:])
 			# for k in range(41):
 			# 	for m in range(3):
 			# 		x = batch_dict["observed_data"][0,m,:,k]
