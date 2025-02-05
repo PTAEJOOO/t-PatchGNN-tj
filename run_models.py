@@ -83,7 +83,7 @@ if __name__ == '__main__':
 	# utils.makedirs("results/")
 
 	##################################################################
-	data_obj = parse_datasets(args, patch_ts=True)
+	data_obj = parse_datasets(args, patch_ts=False)
 	input_dim = data_obj["input_dim"]
 	
 	### Model setting ###
@@ -128,6 +128,11 @@ if __name__ == '__main__':
 		for _ in range(num_batches):
 			optimizer.zero_grad()
 			batch_dict = utils.get_next_batch(data_obj["train_dataloader"])
+			print(torch.sum(batch_dict["observed_data"][:,:,24]))
+			print(torch.mean(batch_dict["observed_data"][:,:,24]))
+			print(torch.max(batch_dict["observed_data"][:,:,24]))
+			print(torch.sum(batch_dict["observed_mask"][:,:,24]))
+			sys.exit(0)
 			train_res = compute_all_losses(model, batch_dict)
 			train_res["loss"].backward()
 			optimizer.step()

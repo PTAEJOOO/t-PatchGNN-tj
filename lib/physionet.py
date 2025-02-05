@@ -20,10 +20,17 @@ class PhysioNet(object):
 	]
 
 	params = [
-		'Age', 'Gender', 'Height', 'ICUType', 'Weight', 'Albumin', 'ALP', 'ALT', 'AST', 'Bilirubin', 'BUN',
-		'Cholesterol', 'Creatinine', 'DiasABP', 'FiO2', 'GCS', 'Glucose', 'HCO3', 'HCT', 'HR', 'K', 'Lactate', 'Mg',
-		'MAP', 'MechVent', 'Na', 'NIDiasABP', 'NIMAP', 'NISysABP', 'PaCO2', 'PaO2', 'pH', 'Platelets', 'RespRate',
-		'SaO2', 'SysABP', 'Temp', 'TroponinI', 'TroponinT', 'Urine', 'WBC'
+		'Age', 'Gender', 'Height', 'ICUType', 
+		'Weight', 'Albumin', 'ALP', 'ALT', 
+		'AST', 'Bilirubin', 'BUN','Cholesterol', 
+		'Creatinine', 'DiasABP', 'FiO2', 'GCS', 
+		'Glucose', 'HCO3', 'HCT', 'HR', 
+		'K', 'Lactate', 'Mg', 'MAP', 
+		'MechVent', 'Na', 'NIDiasABP', 'NIMAP', 
+		'NISysABP', 'PaCO2', 'PaO2', 'pH', 
+		'Platelets', 'RespRate', 'SaO2', 'SysABP', 
+		'Temp', 'TroponinI', 'TroponinT', 'Urine', 
+		'WBC'
 	]
 
 	params_dict = {k: i for i, k in enumerate(params)}

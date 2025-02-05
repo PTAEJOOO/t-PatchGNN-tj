@@ -981,3 +981,15 @@ Train - Loss (one batch): 0.00441
 Val - Loss, MSE, RMSE, MAE, MAPE: 0.00571, 0.00571, 0.07560, 0.03990, 69.38%
 Test - Best epoch, Loss, MSE, RMSE, MAE, MAPE: 26, 0.00502, 0.00502, 0.07086, 0.03851, 142.69%
 Time spent: 12.68s
+/home/taejoo/dsl_lab/t-PatchGNN-tj/run_models.py
+2025-02-05 16:42:59
+run_models.py --dataset physionet --state def --history 24 --patience 10 --batch_size 32 --lr 1e-3 --patch_size 8 --stride 8 --nhead 1 --tf_layer 1 --nlayer 1 --te_dim 10 --node_dim 10 --hid_dim 64 --outlayer Linear --seed 0 --gpu 1
+Namespace(state='def', n=100000000, hop=1, nhead=1, tf_layer=1, nlayer=1, epoch=1000, patience=10, history=24, patch_size=8.0, stride=8.0, logmode='a', lr=0.001, w_decay=0.0, batch_size=32, save='experiments/', load=None, seed=0, dataset='physionet', quantization=0.0, model='tPatchGNN', outlayer='Linear', hid_dim=64, te_dim=10, node_dim=10, gpu='1', npatch=3, device=device(type='cpu'), PID=111726, ndim=41)
+/home/taejoo/dsl_lab/t-PatchGNN-tj/run_models.py
+2025-02-05 16:44:01
+run_models.py --dataset physionet --state def --history 24 --patience 10 --batch_size 100000 --lr 1e-3 --patch_size 8 --stride 8 --nhead 1 --tf_layer 1 --nlayer 1 --te_dim 10 --node_dim 10 --hid_dim 64 --outlayer Linear --seed 0 --gpu 1
+Namespace(state='def', n=100000000, hop=1, nhead=1, tf_layer=1, nlayer=1, epoch=1000, patience=10, history=24, patch_size=8.0, stride=8.0, logmode='a', lr=0.001, w_decay=0.0, batch_size=100000, save='experiments/', load=None, seed=0, dataset='physionet', quantization=0.0, model='tPatchGNN', outlayer='Linear', hid_dim=64, te_dim=10, node_dim=10, gpu='1', npatch=3, device=device(type='cpu'), PID=112558, ndim=41)
+/home/taejoo/dsl_lab/t-PatchGNN-tj/run_models.py
+2025-02-05 16:44:56
+run_models.py --dataset physionet --state def --history 24 --patience 10 --batch_size 100000 --lr 1e-3 --patch_size 8 --stride 8 --nhead 1 --tf_layer 1 --nlayer 1 --te_dim 10 --node_dim 10 --hid_dim 64 --outlayer Linear --seed 0 --gpu 1
+Namespace(state='def', n=100000000, hop=1, nhead=1, tf_layer=1, nlayer=1, epoch=1000, patience=10, history=24, patch_size=8.0, stride=8.0, logmode='a', lr=0.001, w_decay=0.0, batch_size=100000, save='experiments/', load=None, seed=0, dataset='physionet', quantization=0.0, model='tPatchGNN', outlayer='Linear', hid_dim=64, te_dim=10, node_dim=10, gpu='1', npatch=3, device=device(type='cpu'), PID=113185, ndim=41)
